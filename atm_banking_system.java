@@ -68,9 +68,8 @@ public class atm_banking_system {
         while (true) {
         System.out.println("Set your PIN of 4- Digits: ");
         pin = sc.nextInt();
-        int inputPin=0;
-        if(inputPin <=1000 && pin<=9999){
-            inputPin=pin;
+        // int inputPin=0;
+        if(pin >=1000 && pin<=9999){
             break;
         }
         else{
@@ -132,7 +131,8 @@ public class atm_banking_system {
             System.out.println("1. CHECK BALANCE");
             System.out.println("2. DEPOSIT");
             System.out.println("3. WITHDRAW MONEY");
-            System.out.println("4. LOGOUT");
+            System.out.println("4. ACCOUNT DETAILS");
+            System.out.println("5. LOGOUT");
 
             int choice = sc.nextInt();
 
@@ -150,7 +150,7 @@ public class atm_banking_system {
                     break;
 
                 case 4:
-                    logout();
+                    accountDetails();
                     break;
 
                 case 5:
@@ -206,6 +206,13 @@ public class atm_banking_system {
 
     }
 
+    static void accountDetails(){
+        System.out.println("Account Holder Name: "+ name);
+        System.out.println("Account Number: "+ accountNumber);
+        System.out.println("Account PIN: Nahi dikha sakta, Yaad karlena");
+        System.out.println("Updated Account Balance: "+ balance);
+    }
+    
     static void logout() {
         isLoggedIn = false;
         System.out.println("Logged out Successfully");

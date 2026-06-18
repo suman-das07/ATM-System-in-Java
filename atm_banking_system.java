@@ -42,7 +42,8 @@ public class atm_banking_system {
 
                 case 3:
                     System.out.println("Exit Successful");
-                    break;
+                    return;
+                  
 
                 default:
                     System.out.println("INVALID CHOICE");
@@ -54,6 +55,7 @@ public class atm_banking_system {
     }
 
     static void createAccount() {
+            
         System.out.print("Enter your Name: \n");
         name = sc.next();
 
@@ -62,8 +64,20 @@ public class atm_banking_system {
 
         System.out.println("Your Account Number: " + accountNumber);
 
+
+        while (true) {
         System.out.println("Set your PIN of 4- Digits: ");
         pin = sc.nextInt();
+        int inputPin=0;
+        if(inputPin <=1000 && pin<=9999){
+            inputPin=pin;
+            break;
+        }
+        else{
+            System.out.println("PIN value exceeded more than 4- Digits");
+        }
+        
+    }
 
         System.out.println("Enter your first deposit amount: ");
         balance = sc.nextDouble();
@@ -71,7 +85,6 @@ public class atm_banking_system {
         accountExists = true;
 
         System.out.println("Account Created Successfully.");
-
     }
 
     static boolean login() {
@@ -137,6 +150,10 @@ public class atm_banking_system {
                     break;
 
                 case 4:
+                    logout();
+                    break;
+
+                case 5:
                     logout();
                     break;
 

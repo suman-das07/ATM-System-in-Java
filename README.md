@@ -6,12 +6,14 @@
 # Project Overview
 This system mimics a simplified ATM experience where users can:
 
-<ol>Create a bank account</ol>
-- Login using credentials
-- Access banking operations after authentication
-- Perform transactions like deposit and withdrawal
-- View account details and balance
-- Securely logout from the session
+<ol>
+  <li>Create a bank account</li>
+  <li>Login using credentials</li>
+  <li>Access banking operations after authentication</li>
+  <li>Perform transactions like deposit and withdrawal</li>
+  <li>View account details and balance</li>
+  <li>Securely logout from the session</li>
+</ol>
 
 The project is built using procedural programming in Java, focusing on control flow, validation, and modular function design.
 

@@ -14,7 +14,7 @@ public class atm_banking_system {
     static int accountCounter = 1000;
 
     public static void main(String[] args) {
-      onStart();
+        onStart();
     }
 
     static void onStart() {
@@ -24,8 +24,8 @@ public class atm_banking_system {
             System.out.println("  1. CREATE ACCOUNT");
             System.out.println("  2. LOGIN");
             System.out.println("  3. EXIT");
- 
-             System.out.println("Enter your Choice: ");
+
+            System.out.println("Enter your Choice: ");
             int choice = sc.nextInt();
 
             switch (choice) {
@@ -34,14 +34,14 @@ public class atm_banking_system {
                     break;
 
                 case 2:
-                    login();
-                    if (login()==true){
+                    if (login() == true) {
                         bankMenu();
+                        break;
                     }
                     break;
 
                 case 3:
-
+                    System.out.println("Exit Successful");
                     break;
 
                 default:
@@ -74,33 +74,46 @@ public class atm_banking_system {
 
     }
 
-    static boolean login(){
-        
-        if(!accountExists){
-           return false;
-           }
-        System.out.println("Enter Account Number: ");
-        int inputAccount=sc.nextInt();
+    static boolean login() {
 
-        System.out.println("Enter PIN: ");
-        int inputPin=sc.nextInt();
-
-        if(inputAccount==accountNumber && inputPin==pin){
-            System.out.println("Login Successful");
-            isLoggedIn=true;
-            return true;
+        if (!accountExists) {
+            System.out.println("No account found");
+            return false;
         }
-        else{
-            System.out.println("Invalid Credentials");
+    
+        for(int i=1;i<=3; i++){
+            
+            System.out.println("Enter Account Number: ");
+            int inputAccount = sc.nextInt();
+
+            System.out.println("Enter PIN: ");
+            int inputPin = sc.nextInt();
+
+            if (inputAccount == accountNumber && inputPin == pin) {
+                System.out.println("Login Successful");
+                isLoggedIn = true;
+                return true;
+            } else {
+                if(i<3){
+                System.out.println("Invalid Credentials");
+                System.out.println("Attempts Available: "+(3-i));
+                }
+                else {
+                    System.out.println("Invalid Credentials");
+                    System.out.println("Maximum login attempts reached.");
+                }
+            }
+
         }
         
         return false;
+       
 
     }
-    
-    static void bankMenu(){
-        isLoggedIn= true;
-        while (isLoggedIn){
+
+    static void bankMenu() {
+        isLoggedIn = true;
+        while (isLoggedIn) {
 
             System.out.println("BANK MENU");
             System.out.println("1. CHECK BALANCE");
@@ -108,32 +121,76 @@ public class atm_banking_system {
             System.out.println("3. WITHDRAW MONEY");
             System.out.println("4. LOGOUT");
 
-            int choice= sc.nextInt();
+            int choice = sc.nextInt();
 
             switch (choice) {
                 case 1:
-                    
+                    checkBalance();
                     break;
 
                 case 2:
+                    deposit();
+                    break;
 
-                break;
-            
+                case 3:
+                    withdraw();
+                    break;
+
+                case 4:
+                    logout();
+                    break;
+
                 default:
+                    System.out.println("INVALID CHOICE");
                     break;
             }
-
 
         }
     }
 
+    static void checkBalance() {
+        System.out.println("Current Balance: " + balance);
 
+    }
 
+    static void deposit() {
+        System.out.println("Enter Amount to Deposit: ");
+        int amount = sc.nextInt();
 
+        if (amount <= 0) {
+            System.out.println("Invalid Amount");
+            return;
+        }
 
-    static void logout(){
-        isLoggedIn=false;
+        balance += amount;
+
+        System.out.println("Deposit Successful");
+        System.out.println("Updated Balance: " + balance);
+    }
+
+    static void withdraw() {
+        System.out.println("Enter Amount to Withdraw: ");
+        int amount = sc.nextInt();
+
+        if (amount <= 0) {
+            System.out.println("Invalid Amount");
+            return;
+        }
+
+        if (amount > balance) {
+            System.out.println("Insufficient Balance");
+            return;
+        }
+
+        balance -= amount;
+
+        System.out.println("Withdraw Successful");
+        System.out.println("Updated Balance: " + balance);
+
+    }
+
+    static void logout() {
+        isLoggedIn = false;
         System.out.println("Logged out Successfully");
     }
 }
-

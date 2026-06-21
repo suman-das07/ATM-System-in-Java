@@ -43,7 +43,6 @@ public class atm_banking_system {
                 case 3:
                     System.out.println("Exit Successful");
                     return;
-                  
 
                 default:
                     System.out.println("INVALID CHOICE");
@@ -55,7 +54,7 @@ public class atm_banking_system {
     }
 
     static void createAccount() {
-            
+
         System.out.print("Enter your Name: \n");
         name = sc.next();
 
@@ -64,19 +63,17 @@ public class atm_banking_system {
 
         System.out.println("Your Account Number: " + accountNumber);
 
-
         while (true) {
-        System.out.println("Set your PIN of 4- Digits: ");
-        pin = sc.nextInt();
-        // int inputPin=0;
-        if(pin >=1000 && pin<=9999){
-            break;
+            System.out.println("Set your PIN of 4- Digits: ");
+            pin = sc.nextInt();
+            // int inputPin=0;
+            if (pin >= 1000 && pin <= 9999) {
+                break;
+            } else {
+                System.out.println("PIN value exceeded more than 4- Digits");
+            }
+
         }
-        else{
-            System.out.println("PIN value exceeded more than 4- Digits");
-        }
-        
-    }
 
         System.out.println("Enter your first deposit amount: ");
         balance = sc.nextDouble();
@@ -92,9 +89,9 @@ public class atm_banking_system {
             System.out.println("No account found");
             return false;
         }
-    
-        for(int i=1;i<=3; i++){
-            
+
+        for (int i = 1; i <= 3; i++) {
+
             System.out.println("Enter Account Number: ");
             int inputAccount = sc.nextInt();
 
@@ -106,20 +103,18 @@ public class atm_banking_system {
                 isLoggedIn = true;
                 return true;
             } else {
-                if(i<3){
-                System.out.println("Invalid Credentials");
-                System.out.println("Attempts Available: "+(3-i));
-                }
-                else {
+                if (i < 3) {
+                    System.out.println("Invalid Credentials");
+                    System.out.println("Attempts Available: " + (3 - i));
+                } else {
                     System.out.println("Invalid Credentials");
                     System.out.println("Maximum login attempts reached.");
                 }
             }
 
         }
-        
+
         return false;
-       
 
     }
 
@@ -206,13 +201,13 @@ public class atm_banking_system {
 
     }
 
-    static void accountDetails(){
-        System.out.println("Account Holder Name: "+ name);
-        System.out.println("Account Number: "+ accountNumber);
+    static void accountDetails() {
+        System.out.println("Account Holder Name: " + name);
+        System.out.println("Account Number: " + accountNumber);
         System.out.println("Account PIN: Nahi dikha sakta, Yaad karlena");
-        System.out.println("Updated Account Balance: "+ balance);
+        System.out.println("Updated Account Balance: " + balance);
     }
-    
+
     static void logout() {
         isLoggedIn = false;
         System.out.println("Logged out Successfully");

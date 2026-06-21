@@ -64,16 +64,16 @@ public class atm_banking_system {
         System.out.println("Your Account Number: " + accountNumber);
 
         while (true) {
-            System.out.println("Set your PIN of 4- Digits: ");
-            pin = sc.nextInt();
-            // int inputPin=0;
-            if (pin >= 1000 && pin <= 9999) {
-                break;
-            } else {
-                System.out.println("PIN value exceeded more than 4- Digits");
-            }
-
+        System.out.println("Set your PIN of 4- Digits: ");
+        pin = sc.nextInt();
+        if(pin >=1000 && pin<=9999){
+            break;
         }
+        else{
+            System.out.println("PIN value exceeded more than 4- Digits");
+        }
+        
+    }
 
         System.out.println("Enter your first deposit amount: ");
         balance = sc.nextDouble();
